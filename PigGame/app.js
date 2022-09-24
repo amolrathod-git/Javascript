@@ -12,6 +12,7 @@ GAME RULES:
 var scores, activePlayer, roundScores, gamePlaying;
 
 init();
+//abc
 
 /*dice = Math.floor(Math.random()*6)+1;
 console.log(dice);*/
@@ -19,95 +20,95 @@ console.log(dice);*/
 //document.querySelector('#current-'+activePlayer).textContent= dice;
 
 
-document.querySelector('.btn-roll').addEventListener('click', function (){
+document.querySelector('.btn-roll').addEventListener('click', function () {
     //get random number
-    
-    if(gamePlaying){
-    var dice = Math.floor(Math.random()*6)+1;
-    
-     //display result
-    var diceDom =document.querySelector('.dice');
-    
-    diceDom.style.display='block';
-    diceDom.src ='dice-'+dice+'.png';
-    
-    
-    //add  up round scores untill rolled/random number is  1
-    if (dice !== 1){
-        
-        roundScores += dice;
-        document.querySelector('#current-'+activePlayer).textContent=roundScores;
-        
-        
-        }else{
-            
+
+    if (gamePlaying) {
+        var dice = Math.floor(Math.random() * 6) + 1;
+
+        //display result
+        var diceDom = document.querySelector('.dice');
+
+        diceDom.style.display = 'block';
+        diceDom.src = 'dice-' + dice + '.png';
+
+
+        //add  up round scores untill rolled/random number is  1
+        if (dice !== 1) {
+
+            roundScores += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScores;
+
+
+        } else {
+
             //nextplayer; 
-            
-            
-          nextPlayer();
+
+
+            nextPlayer();
         }
     }
-    
-            
+
+
 });
-    
-    
-document.querySelector('.btn-hold').addEventListener('click', function(){
-        
-       //update glabal score
-    if(gamePlaying){
-    scores[activePlayer]=  scores[activePlayer]+roundScores;
-   
-    
-    //update ui
-    
-    document.getElementById('score-'+activePlayer).textContent = scores[activePlayer];
+
+
+document.querySelector('.btn-hold').addEventListener('click', function () {
+
+    //update glabal score
+    if (gamePlaying) {
+        scores[activePlayer] = scores[activePlayer] + roundScores;
+
+
+        //update ui
+
+        document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
     }
-    if(scores[activePlayer]>=20){
-    
-    document.getElementById('name-'+activePlayer).textContent='Winner!!!!';
-    document.querySelector('.dice').style.display='none';
-    document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
-    document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');  
-    gamePlaying =false;    
-        
-}else
-    
-     nextPlayer();
-   
+    if (scores[activePlayer] >= 20) {
+
+        document.getElementById('name-' + activePlayer).textContent = 'Winner!!!!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        gamePlaying = false;
+
+    } else
+
+        nextPlayer();
+
 });
-    
-    function nextPlayer(){
-            roundScores =0;
-            document.getElementById('current-0').textContent='0';
-            document.getElementById('current-1').textContent='0';
-            activePlayer=== 0?activePlayer=1:activePlayer=0;
-            
-            document.querySelector('.player-0-panel').classList.toggle('active');
-            document.querySelector('.player-1-panel').classList.toggle('active');
-            
-    }
+
+function nextPlayer() {
+    roundScores = 0;
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+}
 
 document.querySelector('.btn-new').addEventListener('click', init);
 
-function init(){
-    
-scores = [0, 0];
-activePlayer  = 0;
-roundScores = 0;
-gamePlaying= true;
-    
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.querySelector('.player-0-panel').classList.remove('active');
-document.querySelector('.player-1-panel').classList.remove('active'); 
-document.querySelector('.player-0-panel').classList.remove('winner');
-document.querySelector('.player-1-panel').classList.remove('winner');
-document.querySelector('.player-0-panel').classList.add('active');  
-    document.getElementById('name-0').textContent ='Rutu';
-    document.getElementById('name-1').textContent ='Reena';
+function init() {
+
+    scores = [0, 0];
+    activePlayer = 0;
+    roundScores = 0;
+    gamePlaying = true;
+
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.add('active');
+    document.getElementById('name-0').textContent = 'Rutu';
+    document.getElementById('name-1').textContent = 'Reena';
 
 }
 
